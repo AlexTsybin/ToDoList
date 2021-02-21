@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alextsy.todolist.data.Task
 import com.alextsy.todolist.databinding.ItemTaskBinding
 
-class TasksAdapter(private val listener: OnItemClickListener) : ListAdapter<Task, TasksAdapter.TasksViewHolder>(DiffCallback()) {
+class TasksAdapter(private val listener: OnItemClickListener) :
+    ListAdapter<Task, TasksAdapter.TasksViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TasksViewHolder {
         val binding = ItemTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -28,14 +29,14 @@ class TasksAdapter(private val listener: OnItemClickListener) : ListAdapter<Task
             binding.apply {
                 root.setOnClickListener {
                     val position = adapterPosition
-                    if (position != RecyclerView.NO_POSITION){
+                    if (position != RecyclerView.NO_POSITION) {
                         val task = getItem(position)
                         listener.onItemClick(task)
                     }
                 }
                 checkBoxCompleted.setOnClickListener {
                     val position = adapterPosition
-                    if (position != RecyclerView.NO_POSITION){
+                    if (position != RecyclerView.NO_POSITION) {
                         val task = getItem(position)
                         listener.onCheckBoxClick(task, checkBoxCompleted.isChecked)
                     }
